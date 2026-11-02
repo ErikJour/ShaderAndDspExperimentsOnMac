@@ -47,7 +47,7 @@ MTKViewDelegate: NSObject <MTKViewDelegate>
     dispatch_semaphore_wait(_frameBoundarySemaphore, DISPATCH_TIME_FOREVER);
 
     uint32_t frameIndex   = _currentFrameIndex;
-    uint32_t x = _x;
+//    uint32_t x = _x;
 
     uint32_t vertexCount = 0;
 

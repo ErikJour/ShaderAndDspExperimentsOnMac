@@ -10,7 +10,7 @@
 
 void drawSquare (game_vertex *vertices, uint32_t *vertexCount, float side, vector_float4 color, float offsetX, float offsetY)
 {
-    float screenWidth = 512.;
+//    float screenWidth = 512.f;
     float centerX     = 512/2.0f + offsetX;
     float centerY     = 512/2.0f + offsetY;
     float minX        = centerX - side;
