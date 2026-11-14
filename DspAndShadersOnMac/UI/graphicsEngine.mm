@@ -58,7 +58,6 @@ vector_float4 magenta = { 1.0f, 0.0f, 1.0f, 1.0f };
     uint32_t squareDStart = vertexCount;
     drawSquare(vertices, &vertexCount, 128, magenta,   128,  128);
     uint32_t squareDCount = vertexCount - squareDStart;
-
     
     @autoreleasepool{
         
@@ -149,16 +148,28 @@ vector_float4 magenta = { 1.0f, 0.0f, 1.0f, 1.0f };
     
     //Check bottom left square for click
     _uniforms.clickedSquare.bottomLeft  = clicked;
-    
     //Turn on the audio
     _audioRenderer->onOff               = true;
-    
-    //Print clicked to console
-    if (_audioRenderer->onOff == true) { std::cout << "Clicked" << std::endl; }
+    _audioRenderer->osc.setFrequency(349.23);
     
 }
--(void)setBottomRightClicked:(BOOL)clicked { _uniforms.clickedSquare.bottomRight = clicked; }
--(void)setTopLeftClicked:(BOOL)clicked     { _uniforms.clickedSquare.topLeft     = clicked; }
--(void)setTopRightClicked:(BOOL)clicked    { _uniforms.clickedSquare.topRight    = clicked; }
+-(void)setBottomRightClicked:(BOOL)clicked
+{
+    _uniforms.clickedSquare.bottomRight = clicked;
+    _audioRenderer->onOff               = true;
+    _audioRenderer->osc.setFrequency(261.63);
+}
+-(void)setTopLeftClicked:(BOOL)clicked
+{
+    _uniforms.clickedSquare.topLeft     = clicked;
+    _audioRenderer->onOff               = true;
+    _audioRenderer->osc.setFrequency(392.00);
+}
+-(void)setTopRightClicked:(BOOL)clicked
+{
+    _uniforms.clickedSquare.topRight    = clicked;
+    _audioRenderer->onOff               = true;
+    _audioRenderer->osc.setFrequency(440.00);
+}
 
 @end

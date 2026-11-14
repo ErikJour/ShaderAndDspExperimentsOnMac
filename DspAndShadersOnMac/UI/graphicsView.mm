@@ -163,6 +163,7 @@ static UInt32 clickCount = 0;
     [_viewDelegate setBottomRightClicked:false];
     [_viewDelegate setTopLeftClicked:false];
     [_viewDelegate setTopRightClicked:false];
+    _viewDelegate.audioRenderer->onOff = false;
 }
 
 - (void)mouseMoved:(NSEvent*)event   { std::cout << event.locationInWindow.x << std::endl; }

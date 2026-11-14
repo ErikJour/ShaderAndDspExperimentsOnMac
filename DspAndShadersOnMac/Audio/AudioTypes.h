@@ -36,5 +36,6 @@ struct MyRenderer
         startingFrameCount = 0.0f;
         fft[0].reset();
         fft[1].reset();
+        onOff = false;
     }
 };
