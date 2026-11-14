@@ -7,7 +7,7 @@
 
 #include "../UI/Common.h"
 
-void createTriangle (game_vertex *vertices)
+inline void createTriangle (game_vertex *vertices)
 {
     float scale = 64.f;
 

@@ -6,9 +6,8 @@
 #define HOMEMADELPG_SQUAREGEO_H
 
 #include "../UI/Common.h"
-#include "../UI/GraphicsEngine.h"
 
-void drawSquare (game_vertex *vertices, uint32_t *vertexCount, float side, vector_float4 color, float offsetX, float offsetY)
+inline void drawSquare (game_vertex *vertices, uint32_t *vertexCount, float side, vector_float4 color, float offsetX, float offsetY)
 {
 //    float screenWidth = 512.f;
     float centerX     = 512/2.0f + offsetX;

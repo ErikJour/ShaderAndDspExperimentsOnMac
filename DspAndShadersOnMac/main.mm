@@ -5,8 +5,9 @@
 //  Created by Erik Jourgensen on 10/31/26.
 //
 
-#import <AppKit/AppKit.h>
-#import "UI/mainWindow.h"
+#include <AppKit/AppKit.h>
+#include "UI/appDelegate.h"
+
 
 static BtWindowDel *btWindowDelegate = nil;
 

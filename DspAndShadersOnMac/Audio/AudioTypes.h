@@ -28,6 +28,7 @@ struct MyRenderer
     AnimatedEnvelope    env{};
     AudioData           data{};
     AnimatedGain        gain{};
+    bool                onOff{false};
 
     void prepareToPlay(double newSampleRate, UInt32 maxFrames)
     {
