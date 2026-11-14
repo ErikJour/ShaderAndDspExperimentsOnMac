@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E30B7E4130A89A490065FCF2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E30B7E3F30A89A490065FCF2 /* README.md */; };
 		E3D7D4CF3096287400863372 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3D7D4CE3096287400863372 /* AudioToolbox.framework */; };
 		E3D7D4D13096288700863372 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3D7D4D03096288700863372 /* CoreAudio.framework */; };
 		E3D7D4D33096288D00863372 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3D7D4D23096288D00863372 /* Metal.framework */; };
@@ -38,6 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E30B7E3F30A89A490065FCF2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E3D7D499309626B100863372 /* DspAndShadersOnMac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DspAndShadersOnMac; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D7D4CE3096287400863372 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E3D7D4D03096288700863372 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -98,6 +100,7 @@
 				E3D7D49B309626B100863372 /* DspAndShadersOnMac */,
 				E3D7D4CD3096287400863372 /* Frameworks */,
 				E3D7D49A309626B100863372 /* Products */,
+				E30B7E3F30A89A490065FCF2 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -215,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E30B7E4130A89A490065FCF2 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
