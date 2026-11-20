@@ -1,7 +1,7 @@
+
 #import <Metal/Metal.h>
 #import <MetalKit/MetalKit.h>
 #import <iostream>
-
 #import "graphicsEngine.h"
 #import "Common.h"
 #import "graphicsView.h"
@@ -10,17 +10,10 @@
 static uint32 X          = 0;
 static UInt32 clickCount = 0;
 
-@implementation GraphicsMTKView
-{
-    GraphicsViewDelegate*       _viewDelegate;
-    id<MTLCommandQueue>         _commandQueue;
-    id<MTLRenderPipelineState>  _solidColorPipelineState;
-}
-
-- (instancetype)initWithFrame:(NSRect)frame audioRenderer:(MyRenderer *)audioRenderer
+MTK::View* GraphicsMtkView::initWithFrame(CGRect frame, MyRenderer* audioRenderer)
 {
     //Device setup
-    id<MTLDevice> device = MTLCreateSystemDefaultDevice();
+    MTL::Device* mDevice = MTLCreateSystemDefaultDevice();
     self                 = [super initWithFrame:frame device:device];
     if (!self) return nil;
 
@@ -104,9 +97,15 @@ static UInt32 clickCount = 0;
     return self;
 }
 
-- (BOOL)acceptsFirstResponder { return YES; }
+bool GraphicsMtkView::acceptsFirstResponder() { return YES; }
 
-- (void)raycastAtX:(uint32_t)clickedX y:(uint32_t)clickedY minX:(uint32_t)minX maxX:(uint32_t)maxX minY:(uint32_t)minY maxY:(uint32_t)maxY  callback:(void (^)(bool))fn
+void GraphicsMtkView::raycastAtX(uint32_t x,
+                uint32_t y,
+                uint32_t minX,
+                uint32_t maxX,
+                uint32_t minY,
+                uint32_t maxY,
+                std::function<void(bool)> callback))
 {
     //Basic hit testing
     if (clickedX >= minX && clickedX <= maxX  && clickedY >= minY && clickedY <= maxY) {
@@ -117,7 +116,7 @@ static UInt32 clickCount = 0;
     }
 }
 
-- (void) mouseDown:(NSEvent *) event
+void GraphicsMtkView::mouseDown(NSEvent* event)
 {
     //Mouse hit locations
     double clickedX = event.locationInWindow.x;
@@ -157,7 +156,7 @@ static UInt32 clickCount = 0;
                         callback:^(bool clicked) {[self->_viewDelegate setTopRightClicked:clicked]; }];
 }
 
-- (void) mouseUp:(NSEvent *) event {
+void GraphicsMtkView::mouseUp(NSEvent* event) {
     [_viewDelegate setXOffset:10];
     [_viewDelegate setBottomLeftClicked:false];
     [_viewDelegate setBottomRightClicked:false];

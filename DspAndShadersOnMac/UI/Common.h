@@ -16,7 +16,7 @@
 #ifndef __METAL_VERSION__
 // CPU-only global variable declaration
 extern vector_float4 buttonColor;
-static const NSUInteger kMaxBuffers = 3;
+static const NS::UInteger kMaxBuffers = 3;
 #endif
 
 //For clicked squares

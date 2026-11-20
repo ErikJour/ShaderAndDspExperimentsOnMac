@@ -17,7 +17,6 @@ struct Oscillator {
     double mSampleRate = 44100.0;
     
     void setFrequency(double frequency) {
-        std::cout << "Called set freq" << std::endl;
         mFrequency = frequency;
         prepareOscillator();
     }
