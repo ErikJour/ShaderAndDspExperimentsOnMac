@@ -4,8 +4,17 @@
 //
 //  Created by Erik Jourgensen on 11/18/26.
 //
-#include "AppDel.h"
+#include "AppDelegate.h"
 #include <CoreGraphics/CoreGraphics.h>
+#include "MouseHandler.h"
+
+
+AppDelegate::~AppDelegate() {
+    mView->release();
+    mWindow->release();
+    mDevice->release();
+    delete mAppView;
+}
 
 void AppDelegate::applicationDidFinishLaunching(NS::Notification* notification)
 {
@@ -33,14 +42,16 @@ void AppDelegate::applicationDidFinishLaunching(NS::Notification* notification)
                                        NS::BackingStoreBuffered,
                                        false);
     
+    //Set up the view, and use the custom MouseHandler
+    MouseHandler* _mouseHandler;
+    _mouseHandler = [[MouseHandler alloc] initWithFrame:windowRect device:(id<MTLDevice>)mDevice];
     
-    //This can be a custom class
-    mView = MTK::View::alloc()->init(windowRect, mDevice);
-    
+    mView = (MTK::View*)_mouseHandler;
+
     mView->setColorPixelFormat(MTL::PixelFormat::PixelFormatBGRA8Unorm_sRGB);
     mView->setClearColor(MTL::ClearColor::Make( 0.0, 1.0, 0.0, 1.0));
     
-    mAppView = new AnimatedView(mDevice);
+    mAppView = new AnimatedView(mDevice, &mAudioRenderer);
     mView->setDelegate(mAppView);
     
     mWindow->setContentView(mView);

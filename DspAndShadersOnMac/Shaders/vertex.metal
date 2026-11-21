@@ -21,7 +21,6 @@ vertex RasterizerData vertexMain(uint vertexID [[ vertex_id ]],
             break;
     }
 
-
     out.color    = vertexArray[vertexID].color;
     out.uv       = pixelSpacePosition / 512;
 

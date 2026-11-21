@@ -12,12 +12,13 @@
 @interface
 GraphicsViewDelegate: NSObject <MTKViewDelegate>
 @property (retain) id<MTLCommandQueue>        commandQueue;
-@property (retain) NSMutableArray*            macVertexBuffers;
 @property (retain) id<MTLRenderPipelineState> pipelineState;
 @property GameRenderCommands                  gameRenderCommands;
 @property Uniforms                            uniforms;
 @property (nonatomic, assign) MyRenderer      *audioRenderer;
 @property UInt32                              x;
+//What is a mutable array?
+@property (retain) NSMutableArray*            macVertexBuffers;
 
 - (void)configureMetal;
 - (void)setXOffset:(float)amount;

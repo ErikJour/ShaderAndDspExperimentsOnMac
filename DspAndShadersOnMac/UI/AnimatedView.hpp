@@ -10,18 +10,17 @@
 #include <stdio.h>
 #include <MetalKit/MetalKit.hpp>
 #include "AnimatedRenderer.hpp"
+#include "../Audio/AudioRenderer.h"
 
 
 class AnimatedView : public MTK::ViewDelegate
 {
 public:
-    explicit AnimatedView(MTL::Device* device) : renderer{new AnimatedRenderer(device)} {}
+    explicit AnimatedView(MTL::Device* device, MyRenderer* audioRenderer);
     
-    ~AnimatedView() override { delete renderer; }
+    ~AnimatedView() override;
     
-    void drawInMTKView(MTK::View *pView) override {
-        renderer->Draw(pView);
-    };
+    void drawInMTKView(MTK::View *pView) override;
     
 private:
     AnimatedRenderer* renderer{nullptr};

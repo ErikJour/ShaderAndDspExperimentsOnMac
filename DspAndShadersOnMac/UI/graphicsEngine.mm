@@ -41,7 +41,7 @@ vector_float4 magenta = { 1.0f, 0.0f, 1.0f, 1.0f };
 
     game_vertex *vertices = self.gameRenderCommands.vertexBuffer[frameIndex]->vertices;
 
-    //The various shapes I draw
+    //The various shapes I draw=========================================================
     //Bottom left
     uint32_t squareAStart = vertexCount;
     drawSquare(vertices, &vertexCount, 128, blue, -128, -128);
@@ -58,6 +58,7 @@ vector_float4 magenta = { 1.0f, 0.0f, 1.0f, 1.0f };
     uint32_t squareDStart = vertexCount;
     drawSquare(vertices, &vertexCount, 128, magenta,   128,  128);
     uint32_t squareDCount = vertexCount - squareDStart;
+    //=====================================================================================
     
     @autoreleasepool{
         
@@ -69,16 +70,18 @@ vector_float4 magenta = { 1.0f, 0.0f, 1.0f, 1.0f };
         RenderPassDescriptor.colorAttachments[0].loadAction = MTLLoadActionClear;
         RenderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.1f, 0.1f, 0.1f, 1.0f);
         
-        //Render pass encoder
+        //Render command encoder
         id<MTLRenderCommandEncoder> RenderEncoder = [CommandBuffer renderCommandEncoderWithDescriptor:RenderPassDescriptor];
         RenderEncoder.label = @"RenderEncoder";
+        
+        //=======
 
-        // Viewport using actual drawable size
+        // 1 Viewport using actual drawable size
         CGSize drawableSize = view.drawableSize;
         MTLViewport viewPort = { 0.0, 0.0, drawableSize.width, drawableSize.height, 0.0, 1.0 };
         [RenderEncoder setViewport: viewPort];
         
-        //Setting the pipeline state fpr the draw
+        //2 Setting the pipeline state fpr the draw
         [RenderEncoder setRenderPipelineState: [self pipelineState]];
         [RenderEncoder setVertexBuffer: [[self macVertexBuffers] objectAtIndex: _currentFrameIndex]
                                 offset: 0
@@ -118,6 +121,8 @@ vector_float4 magenta = { 1.0f, 0.0f, 1.0f, 1.0f };
         [RenderEncoder drawPrimitives:MTLPrimitiveTypeTriangle
                           vertexStart:squareDStart
                           vertexCount:squareDCount];
+        
+        //=========
         
         //Finish encoding
         [RenderEncoder endEncoding];

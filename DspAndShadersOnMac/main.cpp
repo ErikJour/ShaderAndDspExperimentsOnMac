@@ -11,7 +11,7 @@
 #include <Foundation/Foundation.hpp>
 #include "metal-cpp-extensions/AppKit/AppKit.hpp"
 #include <iostream>
-#include "UI/AppDel.h"
+#include "UI/AppDelegate.h"
 
 int main()
 {

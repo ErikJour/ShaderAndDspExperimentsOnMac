@@ -16,7 +16,7 @@ class AppDelegate : public NS::ApplicationDelegate
 public:
     
     AppDelegate() = default;
-    ~AppDelegate() = default;
+    ~AppDelegate();
     
     void applicationDidFinishLaunching(NS::Notification* notification);
     bool applicationShouldTerminateAfterLastWindowClosed(NS::Application* sender);
@@ -24,7 +24,7 @@ public:
     //===============
     std::string      title{"Shaders and DSP"};
     NS::Window*      mWindow = nullptr;
-    MTK::View*       mView   = nullptr;
+    MTK::View*       mView   = nullptr; //replace this with mouse handler=
     MTL::Device*     mDevice = nullptr;
     AnimatedView*    mAppView = nullptr;
     MyRenderer       mAudioRenderer;
