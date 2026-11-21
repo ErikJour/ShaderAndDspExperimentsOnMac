@@ -11,11 +11,6 @@
 #include "Common.h"
 #include "../Audio/AudioRenderer.h"
 
-//=======================================
-//This class allows us to customize the behaviour of the app
-//This is owned by the main NS application
-//=======================================
-
 class AppDelegate : public NS::ApplicationDelegate
 {
 public:
@@ -26,7 +21,7 @@ public:
     void applicationDidFinishLaunching(NS::Notification* notification);
     bool applicationShouldTerminateAfterLastWindowClosed(NS::Application* sender);
     
-    //===============
+private:
     std::string      title{"Shaders and DSP"};
     NS::Window*      mWindow  = nullptr;
     MTK::View*       mView    = nullptr; 

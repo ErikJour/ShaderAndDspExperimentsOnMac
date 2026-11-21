@@ -19,14 +19,19 @@ inline void drawSquare (game_vertex *vertices, uint32_t *vertexCount, float side
 
     game_vertex v1 = {{minX, minY, 0.0f, 1.0f }, color };
     vertices[(*vertexCount)++] = v1;
+    
     game_vertex v2 = {{minX, maxY, 0.0f, 1.0f }, color  };
     vertices[(*vertexCount)++] = v2;
+    
     game_vertex v3 = {{maxX, maxY, 0.0f, 1.0f }, color  };
     vertices[(*vertexCount)++] = v3;
+    
     game_vertex v4 = {{minX, minY, 0.0f, 1.0f }, color };
     vertices[(*vertexCount)++] = v4;
+    
     game_vertex v5 = {{maxX, minY, 0.0f, 1.0f }, color  };
     vertices[(*vertexCount)++] = v5;
+    
     game_vertex v6 = {{maxX, maxY, 0.0f, 1.0f }, color  };
     vertices[(*vertexCount)++] = v6;
 }
