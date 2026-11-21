@@ -22,6 +22,8 @@ public:
     
     void drawInMTKView(MTK::View *pView) override;
     
+    AnimatedRenderer* getRenderer() { return renderer; }
+    
 private:
     AnimatedRenderer* renderer{nullptr};
     

@@ -237,6 +237,13 @@ void AnimatedRenderer::Draw(MTK::View *view) {
 void AnimatedRenderer::MouseDown(float x, float y)
 {
     std::cout << "X value is: " << x << std::endl;
+    setBottomLeftClicked(true);
+}
+
+void AnimatedRenderer::MouseUp(float x, float y)
+{
+    std::cout << "X value is: " << x << std::endl;
+    setBottomLeftClicked(false);
 }
 
 void AnimatedRenderer::setBottomLeftClicked(bool clicked)
@@ -244,7 +251,9 @@ void AnimatedRenderer::setBottomLeftClicked(bool clicked)
     //Check bottom left square for click
     mUniforms.clickedSquare.bottomLeft  = clicked;
     //Turn on the audio
-    mAudioRenderer->onOff               = true;
-    mAudioRenderer->osc.setFrequency(349.23);
+//    mAudioRenderer->onOff               = true;
+//    mAudioRenderer->osc.setFrequency(349.23);
 }
+
+
 

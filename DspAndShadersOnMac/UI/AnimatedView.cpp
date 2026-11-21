@@ -17,6 +17,7 @@ AnimatedView::~AnimatedView()
 void AnimatedView::drawInMTKView(MTK::View *pView) {
         renderer->Draw(pView);
     };
+
     
 
 

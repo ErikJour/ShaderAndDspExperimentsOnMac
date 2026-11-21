@@ -4,7 +4,7 @@
 //
 //  Created by Erik Jourgensen on 11/18/26.
 //
-#include "AppDelegate.h"
+#include "AnimatedDelegate.h"
 #include <CoreGraphics/CoreGraphics.h>
 #include "MouseHandler.h"
 
@@ -30,7 +30,7 @@ void AppDelegate::applicationDidFinishLaunching(NS::Notification* notification)
     CGRect screenRect = CGDisplayBounds(CGMainDisplayID());
     CGRect windowRect =  {
         { (screenRect.size.width - GLOBAL_WIDTH) * 0.5,
-            (screenRect.size.height - GLOBAL_HEIGHT) * 0.5 },
+        (screenRect.size.height - GLOBAL_HEIGHT) * 0.5 },
         { GLOBAL_WIDTH, GLOBAL_HEIGHT }
     };
     
@@ -49,13 +49,21 @@ void AppDelegate::applicationDidFinishLaunching(NS::Notification* notification)
     mView = (MTK::View*)_mouseHandler;
 
     mView->setColorPixelFormat(MTL::PixelFormat::PixelFormatBGRA8Unorm_sRGB);
-    mView->setClearColor(MTL::ClearColor::Make( 0.0, 1.0, 0.0, 1.0));
+    mView->setClearColor(MTL::ClearColor::Make( 0.0,
+                                                1.0,
+                                                0.0,
+                                                1.0));
     
-    mAppView = new AnimatedView(mDevice, &mAudioRenderer);
+    //Construct a view delegate and set it
+    mAppView = new AnimatedView(mDevice,
+                                &mAudioRenderer);
+    
     mView->setDelegate(mAppView);
-    
+    _mouseHandler.renderer = mAppView->getRenderer();
+
     mWindow->setContentView(mView);
-    mWindow->setTitle(NS::String::string(title.c_str(), NS::StringEncoding::UTF8StringEncoding));
+    mWindow->setTitle(NS::String::string(title.c_str(),
+                      NS::StringEncoding::UTF8StringEncoding));
 
     //Get global shared application state and activate it -> this will open the actual window
     mWindow->makeKeyAndOrderFront(nullptr);

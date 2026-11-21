@@ -1,13 +1,12 @@
 #import <iostream>
 #import "MouseHandler.h"
+#import "AnimatedRenderer.hpp"
 
-static uint32 X          = 0;
+//static uint32 X          = 0;
+//Just for Erik reference -> Uint32_t is a gaurnateed 32-bit (4-byte) unsigned integer, basically force non-negatives
 static UInt32 clickCount = 0;
 
 @implementation MouseHandler
-{
-    AnimatedRenderer* _renderer;
-}
 
 - (BOOL)acceptsFirstResponder { return YES; }
 
@@ -63,6 +62,9 @@ static UInt32 clickCount = 0;
 }
 
 - (void) mouseUp:(NSEvent *) event {
+    double clickedX = event.locationInWindow.x;
+    double clickedY = event.locationInWindow.y;
+    _renderer->MouseUp(clickedX, clickedY);
 //    [_viewDelegate setXOffset:10];
 //    [_viewDelegate setBottomLeftClicked:false];
 //    [_viewDelegate setBottomRightClicked:false];

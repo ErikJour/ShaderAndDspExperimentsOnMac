@@ -29,6 +29,7 @@ public:
     void BuildShaders();
     void BuildBuffers();
     void MouseDown(float x, float y);
+    void MouseUp(float x, float y);
     void setBottomLeftClicked(bool clicked);
     void setBottomRightClicked(bool clicked);
     void setTopLeftClicked(bool clicked);

@@ -13,9 +13,13 @@
 //
 #pragma once
 #import <MetalKit/MetalKit.h>
-#import "AnimatedRenderer.hpp"
+
+class AnimatedRenderer;
 
 @interface MouseHandler : MTKView
+
+@property (nonatomic, assign) AnimatedRenderer  *renderer;
+
 
 //Hit testing
 - (void)raycastAtX:(uint32_t)clickedX y:(uint32_t)clickedY minX:(uint32_t)minX maxX:(uint32_t)maxX minY:(uint32_t)minY maxY:(uint32_t)maxY callback:(void (^)(bool))fn;

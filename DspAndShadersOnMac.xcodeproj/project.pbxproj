@@ -40,7 +40,6 @@
 				"metal-cpp/LICENSE.txt",
 				"metal-cpp/README.md",
 				README.md,
-				UI/graphicsEngine.mm,
 			);
 			target = E3D934D73097BA0900122630 /* DspAndShadersOnMacApp */;
 		};

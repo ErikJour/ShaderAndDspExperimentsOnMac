@@ -11,6 +11,11 @@
 #include "Common.h"
 #include "../Audio/AudioRenderer.h"
 
+//=======================================
+//This class allows us to customize the behaviour of the app
+//This is owned by the main NS application
+//=======================================
+
 class AppDelegate : public NS::ApplicationDelegate
 {
 public:
@@ -23,9 +28,9 @@ public:
     
     //===============
     std::string      title{"Shaders and DSP"};
-    NS::Window*      mWindow = nullptr;
-    MTK::View*       mView   = nullptr; //replace this with mouse handler=
-    MTL::Device*     mDevice = nullptr;
+    NS::Window*      mWindow  = nullptr;
+    MTK::View*       mView    = nullptr; 
+    MTL::Device*     mDevice  = nullptr;
     AnimatedView*    mAppView = nullptr;
     MyRenderer       mAudioRenderer;
 };
