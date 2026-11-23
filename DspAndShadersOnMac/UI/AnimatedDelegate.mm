@@ -23,10 +23,11 @@ void AppDelegate::applicationDidFinishLaunching(NS::Notification* notification)
     mDevice = MTL::CreateSystemDefaultDevice();
     
     CGRect screenRect = CGDisplayBounds(CGMainDisplayID());
+    
     CGRect windowRect =  {
-                        { (screenRect.size.width - GLOBAL_WIDTH) * 0.5,
-                            (screenRect.size.height - GLOBAL_HEIGHT) * 0.5 },
-                        { GLOBAL_WIDTH, GLOBAL_HEIGHT }
+                         { (screenRect.size.width - GLOBAL_WIDTH),
+                           (screenRect.size.height - GLOBAL_HEIGHT) },
+                         { GLOBAL_WIDTH, GLOBAL_HEIGHT }
     };
     
     mWindow = NS::Window::alloc()->init (windowRect,

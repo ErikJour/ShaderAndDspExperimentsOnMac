@@ -6,14 +6,24 @@
 #define HOMEMADELPG_SQUAREGEO_H
 
 #include "../UI/Common.h"
+constexpr float scale = 0.5f;
 
-inline void drawSquare (game_vertex *vertices, uint32_t *vertexCount, float side, vector_float4 color, float offsetX, float offsetY)
+inline void drawSquare (game_vertex *vertices,
+                        uint32_t *vertexCount,
+                        float side,
+                        vector_float4 color,
+                        float offsetX, float
+                        offsetY)
 {
-//    float screenWidth = 512.f;
-    float centerX     = 512/2.0f + offsetX;
-    float centerY     = 512/2.0f + offsetY;
+    
+
+    float centerX     = GLOBAL_WIDTH * scale + offsetX;
+    std::cout << "Center X is: " << centerX << std::endl;
+    float centerY     = GLOBAL_HEIGHT * scale + offsetY;
+    
     float minX        = centerX - side;
     float maxX        = centerX + side;
+    
     float minY        = centerY - side;
     float maxY        = centerY + side;
 
@@ -34,6 +44,10 @@ inline void drawSquare (game_vertex *vertices, uint32_t *vertexCount, float side
     
     game_vertex v6 = {{maxX, maxY, 0.0f, 1.0f }, color  };
     vertices[(*vertexCount)++] = v6;
+    
+    std::cout << "Side length one" << maxX - minX << std::endl;
+    std::cout << "Side length two" << maxY - minY << std::endl;
+    std::cout << "Side is" << side << std::endl;
 }
 
 #endif //HOMEMADELPG_SQUAREGEO_H

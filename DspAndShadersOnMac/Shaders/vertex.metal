@@ -8,13 +8,18 @@ vertex RasterizerData vertexMain(uint vertexID [[ vertex_id ]],
 
 
     float2 pixelSpacePosition = vertexArray[vertexID].position.xy;
-    float2 normalizedPosition = (pixelSpacePosition / (512.0 / 2.0)) - 1.0;
+    
+    float normalizedPositionX = (pixelSpacePosition.x / (GLOBAL_WIDTH / 2.0)) - 1.0;
+    float normalizedPositionY = (pixelSpacePosition.y / (GLOBAL_HEIGHT / 2.0)) - 1.0;
 
     switch (uniforms.materialId)
     {
         case MAT_BOTTOM_LEFT:
         default:
-            out.position = float4(normalizedPosition, 0.0, 1.0);
+            out.position = float4(normalizedPositionX,
+                                  normalizedPositionY,
+                                  0.0,
+                                  1.0);
             break;
     }
 

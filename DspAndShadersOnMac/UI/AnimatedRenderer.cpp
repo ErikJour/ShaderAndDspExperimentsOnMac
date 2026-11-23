@@ -37,8 +37,8 @@ void AnimatedRenderer::BuildShaders()
 
  
     MTL::Function* vertexFunction   = lib->newFunction( NS::String::string("vertexMain", UTF8StringEncoding));
+    
     MTL::Function* fragmentFunction = lib->newFunction( NS::String::string("fragmentMain", UTF8StringEncoding));
-  
    
     MTL::RenderPipelineDescriptor* renderPipelineDescriptor = MTL::RenderPipelineDescriptor::alloc()->init();
 
@@ -106,11 +106,17 @@ void AnimatedRenderer::Draw(MTK::View *view) {
     uint32_t vertexCount  = 0;
 
     game_vertex *vertices = mGameRenderCommands.vertexBuffer[frameIndex]->vertices;
-    
 
     uint32_t squareAStart = vertexCount;
     
-    drawSquare(vertices, &vertexCount, 128, blue, 0, 0);
+    float sideLength = 128;
+    
+    drawSquare(vertices,
+               &vertexCount,
+               sideLength,
+               blue,
+               0,
+               0);
     
     uint32_t squareACount = vertexCount - squareAStart;
    
@@ -134,7 +140,11 @@ void AnimatedRenderer::Draw(MTK::View *view) {
    
     CGSize drawableSize = view->drawableSize();
     
-    MTL::Viewport viewPort = { 0.0, 0.0, drawableSize.width, drawableSize.height, 0.0, 1.0 };
+    MTL::Viewport viewPort = { 0.0, 0.0,
+                            drawableSize.width,
+                            drawableSize.height,
+                            0.0,
+                            1.0 };
     
     renderCommandEncoder->setViewport(viewPort);
     
@@ -146,12 +156,15 @@ void AnimatedRenderer::Draw(MTK::View *view) {
     mUniforms.viewportSize = (vector_float2){ 512.0f, 512.0f };
     
     mUniforms.materialId = MAT_BOTTOM_LEFT;
+    
     renderCommandEncoder->setVertexBytes(&mUniforms,
                                          sizeof(Uniforms),
                                          11);
+    
     renderCommandEncoder->setFragmentBytes(&mUniforms,
                                            sizeof(Uniforms),
                                            11);
+    
     renderCommandEncoder->drawPrimitives(MTL::PrimitiveType::PrimitiveTypeTriangle,
                                          squareAStart,
                                          squareACount);
