@@ -4,6 +4,7 @@
 //
 //  Created by Erik Jourgensen on 10/31/26.
 //
+#include "Helpers/PerlinNoise.h"
 
 float plot (float2 st, float pct)
 {
@@ -33,27 +34,6 @@ float2 grad2(float2 p) {
     float angle = h * 6.28318530718;
     return float2(cos(angle), sin(angle));
 }
-
-float perlin2D(float2 p) {
-    float2 i = floor(p);
-    float2 f = fract(p);
-
-    // Quintic fade curve (6t^5 - 15t^4 + 10t^3) used by classic Perlin / MaterialX noise
-    float2 u = f * f * f * (f * (f * 6.0 - 15.0) + 10.0);
-
-    float n00 = dot(grad2(i + float2(0.0, 0.0)), f - float2(0.0, 0.0));
-    float n10 = dot(grad2(i + float2(1.0, 0.0)), f - float2(1.0, 0.0));
-    float n01 = dot(grad2(i + float2(0.0, 1.0)), f - float2(0.0, 1.0));
-    float n11 = dot(grad2(i + float2(1.0, 1.0)), f - float2(1.0, 1.0));
-
-    float nx0 = mix(n00, n10, u.x);
-    float nx1 = mix(n01, n11, u.x);
-    float nxy = mix(nx0, nx1, u.y);
-
-    // Remap signed noise into roughly [0.0, 1.0] for greyscale display
-    return clamp(nxy * 0.70710678 + 0.5, 0.0, 1.0);
-}
-
 
 //========================================================
 inline float4 fragmentPlane(RasterizerData in,
@@ -100,9 +80,33 @@ inline float4 fragmentPlane(RasterizerData in,
     float random      = hash_to_float(gridUv.x * subdivision + gridUv.y);
     color             = float3(random);
     
-    //Pattern 8 -> Perlin Noise (not working yet)
-    float perlinNoise = perlin2D(vUv);
-    color = float3(perlinNoise);
+    //Pattern 8 -> Perlin Noise ===============================
+    float2 perlinUv   = vUv * 15.0;
+    float perlinNoise = mx_noise_float(perlinUv);
+    color = float3(step(0.8,
+                        fract(perlinNoise + uniforms.audioData)));
+    
+    //Pattern 9 -> Worley Noise ===============================
+    float2 worleyUv = vUv * 10.0;
+    float worleyNoise = mx_worley_noise_float(float3(worleyUv, uniforms.audioData));
+    float worleyPower = pow(worleyNoise, 0.8);
+    color = float3(palette(
+                           worleyPower,
+                           float3(0.5, 0.3, 0.4),
+                           float3(0.9, 0.5, 0.4),
+                           float3(1.0, 1.0, 1.0),
+                           float3(0.0, 0.1, 0.2)));
+    
+    //Pattern 10 -> Worley Noise ===============================
+    float3 cuasticInput = float3(vUv * 6.0, uniforms.audioData);
+    float causticsNoise = pow(mx_worley_noise_float(cuasticInput), 6.0);
+    float3 deep         = float3( 27,  57,  86) / 255.0f;
+    float3 shallow      = float3( 17, 238, 255) / 255.0f;
+
+    float3 depthColor   = mix(deep, shallow, causticsNoise);
+    
+    color               = float3(depthColor);
+
     
     return float4(color, 1.0);
 }

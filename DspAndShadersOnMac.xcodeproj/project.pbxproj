@@ -37,6 +37,13 @@
 		E30B6EF830ADDD8600BA27C3 /* Exceptions for "DspAndShadersOnMac" folder in "DspAndShadersOnMacApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				"images/Pattern _03.png",
+				images/Pattern_01.png,
+				images/Pattern_02.png,
+				images/Pattern_04.png,
+				images/Pattern_05.png,
+				images/Pattern_06.png,
+				images/Pattern_07.png,
 				"metal-cpp/LICENSE.txt",
 				"metal-cpp/README.md",
 				README.md,
@@ -45,11 +52,22 @@
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		E397E58A30B46E7600EA4DE6 /* Exceptions for "DspAndShadersOnMac" folder in "Copy Bundle Resources" phase from "DspAndShadersOnMacApp" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = E3D934D63097BA0900122630 /* Resources */;
+			membershipExceptions = (
+				Shaders/Helpers/PerlinNoise.h,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E3D7D49B309626B100863372 /* DspAndShadersOnMac */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				E30B6EF830ADDD8600BA27C3 /* Exceptions for "DspAndShadersOnMac" folder in "DspAndShadersOnMacApp" target */,
+				E397E58A30B46E7600EA4DE6 /* Exceptions for "DspAndShadersOnMac" folder in "Copy Bundle Resources" phase from "DspAndShadersOnMacApp" target */,
 			);
 			path = DspAndShadersOnMac;
 			sourceTree = "<group>";
