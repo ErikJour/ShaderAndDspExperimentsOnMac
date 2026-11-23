@@ -44,6 +44,8 @@
 				images/Pattern_05.png,
 				images/Pattern_06.png,
 				images/Pattern_07.png,
+				images/Pattern_08.png,
+				images/Pattern_09.png,
 				"metal-cpp/LICENSE.txt",
 				"metal-cpp/README.md",
 				README.md,
