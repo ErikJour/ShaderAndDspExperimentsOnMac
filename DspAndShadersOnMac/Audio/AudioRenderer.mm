@@ -135,7 +135,7 @@ void renderAudio(MyRenderer* renderer)
 {
     renderer->outputUnit         = nullptr;
     renderer->startingFrameCount = 0.0;
-    renderer->data.outputData.store(0.0f, std::memory_order_relaxed);
+//    renderer->data.outputData.store(0.0f, std::memory_order_relaxed);
     //============================
     //Callback function
     //============================

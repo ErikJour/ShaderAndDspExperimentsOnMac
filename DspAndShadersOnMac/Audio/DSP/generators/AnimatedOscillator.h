@@ -31,7 +31,8 @@ struct Oscillator {
         
         phase += increment;
         
-        if (phase >- 1.0) { phase -= 1.0; }
+        if  (phase >- 1.0)
+            { phase -= 1.0; }
         
         return sine;
     }

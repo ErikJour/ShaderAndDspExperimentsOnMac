@@ -152,7 +152,9 @@ void AnimatedRenderer::Draw(MTK::View *view) {
     renderCommandEncoder->setVertexBuffer(mVertexBuffers[mCurrentFrameIndex].get(), 0, 0);
     
     // PASS UNIFORMS TO FRAGMENT SHADER AT INDEX 11
-    mUniforms.audioData     = mAudioRenderer->data.outputData;
+    mAudioData           = mAudioRenderer->data.outputData;
+    mUniforms.audioData += mAudioData * 0.05;;
+        
     mUniforms.viewportSize = (vector_float2){ 512.0f, 512.0f };
     
     mUniforms.materialId = MAT_BOTTOM_LEFT;
@@ -201,6 +203,7 @@ void AnimatedRenderer::MouseDown(float x, float y)
 void AnimatedRenderer::MouseUp(float x, float y)
 {
     setBottomLeftClicked(false);
+    mAudioRenderer->onOff               = false;
 }
 
 void AnimatedRenderer::setBottomLeftClicked(bool clicked)
@@ -208,8 +211,8 @@ void AnimatedRenderer::setBottomLeftClicked(bool clicked)
     //Check bottom left square for click
     mUniforms.clickedSquare.bottomLeft  = clicked;
     //Turn on the audio
-//    mAudioRenderer->onOff               = true;
-//    mAudioRenderer->osc.setFrequency(349.23);
+    mAudioRenderer->onOff               = true;
+    mAudioRenderer->osc.setFrequency(349.23);
 }
 
 

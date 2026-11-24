@@ -18,7 +18,6 @@ inline void drawSquare (game_vertex *vertices,
     
 
     float centerX     = GLOBAL_WIDTH * scale + offsetX;
-    std::cout << "Center X is: " << centerX << std::endl;
     float centerY     = GLOBAL_HEIGHT * scale + offsetY;
     
     float minX        = centerX - side;
@@ -45,9 +44,6 @@ inline void drawSquare (game_vertex *vertices,
     game_vertex v6 = {{maxX, maxY, 0.0f, 1.0f }, color  };
     vertices[(*vertexCount)++] = v6;
     
-    std::cout << "Side length one" << maxX - minX << std::endl;
-    std::cout << "Side length two" << maxY - minY << std::endl;
-    std::cout << "Side is" << side << std::endl;
 }
 
 #endif //HOMEMADELPG_SQUAREGEO_H

@@ -20,6 +20,8 @@ inline void renderVoice(MyRenderer *renderer, AudioBufferList *ioData, UInt32 in
     auto *rightChannel = (Float32 *) ioData->mBuffers[1].mData;
 
     float silence = 0.0f;
+    
+    float average = 0.0f;
 
     
         for (int frame = 0; frame < inNumberFrames; ++frame) {
@@ -27,22 +29,20 @@ inline void renderVoice(MyRenderer *renderer, AudioBufferList *ioData, UInt32 in
             float oscSample       = renderer->osc.nextValue();
             float noiseSample     = renderer->noise.nextValue() * silence;
             float sample          = (oscSample + noiseSample) * renderer->gain.applyGain(0.5f);
+            average += std::abs(sample);
             
-            float release         = renderer->env.nextValue();
-            
-            if (renderer->onOff) {
-                
-                (leftChannel)[frame]  = (rightChannel)[frame] = (sample) /** release*/;
-            }
+//            float release         = renderer->env.nextValue();
+
+            (leftChannel)[frame]  = (rightChannel)[frame] = (sample) /** release*/;
+          
             //Ok, now an oscillator plays by holding down the bottom left square
-            else {
-                (leftChannel)[frame]   *= 0.0;
-                (rightChannel)[frame]  *= 0.0;
-                renderer->data.setOutputData(release);
-            }
+         
+//            (leftChannel)[frame]   *= 0.0;
+//            (rightChannel)[frame]  *= 0.0;
+          
             
             renderer->currentSample++;
         }
-    
-    renderer->data.updateOutData();
-}
+        average = average / inNumberFrames;
+        renderer->data.setOutputData(average);
+    }

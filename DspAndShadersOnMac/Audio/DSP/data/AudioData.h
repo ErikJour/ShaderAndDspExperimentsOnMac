@@ -11,7 +11,8 @@ struct AudioData {
 
     inline void setOutputData(float sampleValue)
     {
-        outputData = sampleValue;
+//        outputData = sampleValue;
+        outputData.store(sampleValue, std::memory_order_relaxed);
     }
 
     inline void updateOutData()
@@ -23,7 +24,7 @@ struct AudioData {
 
     void getData()
     {
-        std::cout << outputData << std::endl;
+        std::cout << "Audio data is: " << outputData << std::endl;
     }
 
 };

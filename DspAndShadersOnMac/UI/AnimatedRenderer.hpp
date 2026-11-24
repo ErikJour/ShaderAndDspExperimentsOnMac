@@ -47,6 +47,7 @@ private:
     UInt32                                       mX{0};
     dispatch_semaphore_t                         mFrameBoundarySemaphore;
     uint32_t                                     mCurrentFrameIndex;
+    float                                        mAudioData;
 };
 
 
