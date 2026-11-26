@@ -1,0 +1,22 @@
+@Tutorials(name: "DspAndShadersOnMacApp") {
+    @Intro(title: "Build a Real-Time Audio Visualizer") {
+        Learn how to process audio and draw it with Metal shaders.
+    }
+
+    @Chapter(name: "Audio Fundamentals") {
+        Capture microphone input and apply a low-pass filter.
+
+        @Image(source: "chapter1-hero.png", alt: "A waveform passing through a filter")
+
+        @TutorialReference(tutorial: "doc:CapturingAudio")
+        @TutorialReference(tutorial: "doc:ApplyingAFilter")
+    }
+
+    @Chapter(name: "Shaders") {
+        Turn audio samples into visuals on the GPU.
+
+        @Image(source: "chapter2-hero.png", alt: "A spectrum drawn by a fragment shader")
+
+        @TutorialReference(tutorial: "doc:WritingAFragmentShader")
+    }
+}

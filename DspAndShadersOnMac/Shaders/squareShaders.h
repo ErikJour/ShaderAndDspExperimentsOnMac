@@ -19,18 +19,16 @@ inline float4 fragmentPlane(RasterizerData in,
     float3 color  = float3(vUv.x, vUv.y, 1.0);
     
     float modData = uniforms.audioData;
-//    modData += modData;
 
-    
     //From pattern 10 on TSL lesson
-    float valueToMod    = 30; //Cold filter this
+    float valueToMod    = 30; //Could filter this
     
     float3 cuasticInput = float3(vUv * valueToMod, modData);
     float causticsNoise = pow(mx_worley_noise_float(cuasticInput), 6.0);
-//    float3 deep         = float3( 27,  57,  86) / 255.0f;
-//    float3 shallow      = float3( 17, 238, 255) / 255.0f;
-//    float3 depthColor   = mix(deep, shallow, causticsNoise);
-    color               = float3(causticsNoise);
+    float3 deep         = float3( 27,  57,  86) / 255.0f;
+    float3 shallow      = float3( 17, 238, 255) / 255.0f;
+    float3 depthColor   = mix(deep, shallow, causticsNoise);
+    color               = float3(depthColor);
 
     
     return float4(color, 1.0);

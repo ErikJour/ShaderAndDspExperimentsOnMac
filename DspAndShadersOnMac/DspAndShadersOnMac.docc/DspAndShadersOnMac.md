@@ -1,13 +1,23 @@
 # ``DspAndShadersOnMacApp``
 
-<!--@START_MENU_TOKEN@-->Summary<!--@END_MENU_TOKEN@-->
+Real-time audio DSP and Metal shader visualizations for macOS.
 
 ## Overview
 
-<!--@START_MENU_TOKEN@-->Text<!--@END_MENU_TOKEN@-->
+DspAndShadersOnMacApp captures audio, processes it with DSP filters,
+and renders the results with Metal shaders.
 
 ## Topics
 
-### <!--@START_MENU_TOKEN@-->Group<!--@END_MENU_TOKEN@-->
+### Essentials
 
-- <!--@START_MENU_TOKEN@-->``Symbol``<!--@END_MENU_TOKEN@-->
+- <doc:GettingStarted>
+- <doc:Tutorials>
+
+### Audio Processing
+
+- ``Oscillation``
+
+### Rendering
+
+- ``ShaderRenderer``
