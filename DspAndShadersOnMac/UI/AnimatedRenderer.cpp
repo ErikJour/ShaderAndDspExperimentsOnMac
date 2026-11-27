@@ -54,7 +54,6 @@ void AnimatedRenderer::BuildShaders()
         std::cout << error->localizedDescription()->utf8String()<< "\n";
         assert( false );
        }
-
   
     vertexFunction->release();
     fragmentFunction->release();
@@ -109,7 +108,7 @@ void AnimatedRenderer::Draw(MTK::View *view) {
 
     uint32_t squareAStart = vertexCount;
     
-    float sideLength = 128;
+    float sideLength = 150;
     
     drawSquare(vertices,
                &vertexCount,
@@ -155,7 +154,8 @@ void AnimatedRenderer::Draw(MTK::View *view) {
     mAudioData           = mAudioRenderer->data.outputData;
     mUniforms.audioData += mAudioData * 0.05;;
         
-    mUniforms.viewportSize = (vector_float2){ 512.0f, 512.0f };
+    mUniforms.viewportSize = (vector_float2){   GLOBAL_WIDTH,
+                                                GLOBAL_HEIGHT };
     
     mUniforms.materialId = MAT_BOTTOM_LEFT;
     
@@ -203,7 +203,7 @@ void AnimatedRenderer::MouseDown(float x, float y)
 void AnimatedRenderer::MouseUp(float x, float y)
 {
     setBottomLeftClicked(false);
-    mAudioRenderer->onOff               = false;
+    mAudioRenderer->onOff = false;
 }
 
 void AnimatedRenderer::setBottomLeftClicked(bool clicked)

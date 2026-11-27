@@ -16,7 +16,8 @@ and renders the results with Metal shaders.
 
 ### Audio Processing
 
-- ``Oscillation``
+- <doc:SineWaves>
+- <doc:FeedforwardFilter>
 
 ### Rendering
 

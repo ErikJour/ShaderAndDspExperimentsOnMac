@@ -50,6 +50,7 @@ typedef enum :uint32_t {
 struct game_vertex {
     vector_float4 position;
     vector_float4 color;
+    vector_float2 uv;
 };
 
 struct Colors {

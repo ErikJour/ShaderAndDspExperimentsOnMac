@@ -8,9 +8,11 @@ vertex RasterizerData vertexMain(uint vertexID [[ vertex_id ]],
 
 
     float2 pixelSpacePosition = vertexArray[vertexID].position.xy;
-    
+    float2 uv                 = vertexArray[vertexID].uv;
+        
     float normalizedPositionX = (pixelSpacePosition.x / (GLOBAL_WIDTH / 2.0)) - 1.0;
     float normalizedPositionY = (pixelSpacePosition.y / (GLOBAL_HEIGHT / 2.0)) - 1.0;
+    
 
     switch (uniforms.materialId)
     {
@@ -24,8 +26,11 @@ vertex RasterizerData vertexMain(uint vertexID [[ vertex_id ]],
     }
 
     out.color    = vertexArray[vertexID].color;
-    out.uv       = pixelSpacePosition / 512;
+    
+    //UV is a coordinate system for the shape being rendered
+    out.uv       = vertexArray[vertexID].uv;
 
+    
     return out;
 }
 
